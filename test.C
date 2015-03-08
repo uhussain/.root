@@ -1,0 +1,5 @@
+
+char * testMe()
+{
+  return "hello";
+}
