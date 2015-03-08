@@ -1,5 +1,0 @@
-
-char * testMe()
-{
-  return "hello";
-}
