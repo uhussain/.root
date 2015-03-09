@@ -9,7 +9,7 @@ Chances of success: possibly zero.
 Installation
 ------------
 * Clone repo: `pushd ~ && git clone https://github.com/nsmith-/.root.git && popd`
-* Edit `rootlogon.C`, add line `gROOT->ProcessLine(".x $HOME/.root/dotrootInit.C+");`
+* Edit `rootlogon.C`, add line `gROOT->ProcessLineSync(".x $HOME/.root/dotrootInit.C+");`
 * Enjoy!
 
 Importing Packages
