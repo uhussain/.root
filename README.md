@@ -4,7 +4,7 @@ dotroot
 Goal: to provide a more convenient way to include user scripts for [ROOT](https://root.cern.ch/drupal/) by emulating 
 package ecosystems like [vundle](https://github.com/gmarik/Vundle.vim) and [brew](http://brew.sh/)
 
-Chances of success: possibly zero.
+Progress: Nailed down a structure, most of what is written here has not been made into code.
 
 Installation
 ------------
@@ -30,7 +30,7 @@ ROOT Example: (`macro.C`)
 ```cpp
 void macro ( int argument )
 {
-  dotrootImport("nsmith-/buildLegend");
+  dotrootImport("user/package");
 
   // ... code ...
 }
@@ -39,7 +39,7 @@ void macro ( int argument )
 PyROOT Example: (`macro.py`)
 ```python
 import ROOT
-ROOT.dotrootImport('nsmith-/buildLegend')
+ROOT.dotrootImport('user/package')
 
 # ... code ...
 ```
