@@ -1,6 +1,5 @@
-/* dotrootInit.C : Sets up paths so that dotroot is available to both root and python
- *   This is done by adding the .root/macro directory to ROOT's MacroPath, and by adding
- *   .root/dotroot to python's path
+/* dotrootInit.C : Sets up dotroot to be available to both root and python
+ *   This is done by adding .root/dotroot to python's path
  *   
  */
 #include "TApplication.h"
@@ -25,11 +24,8 @@ void dotrootInit() {
   // TString because trying to be as ROOT-centric as possible
   // TODO: figure out directory this script is called from
   TString dotrootPath(gSystem->ExpandPathName("$HOME/.root"));
-
   TPython::Exec("import sys");
   TPython::Exec("sys.path.append('" + dotrootPath + "')");
-
-  gROOT->SetMacroPath( gROOT->GetMacroPath() + dotrootPath + "/macro:" );
 
   if ( strcmp(gApplication->ClassName(), "TRint") == 0 ) {
     // interactive ROOT

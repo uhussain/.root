@@ -1,4 +1,9 @@
 import ROOT
+import os
+
+# Package macro path
+dotrootPath = os.path.dirname(os.path.realpath(__file__))
+ROOT.gROOT.SetMacroPath(ROOT.gROOT.GetMacroPath()+dotrootPath+"/macro:")
 
 # Set up dotrootImport() function
 from dotrootImport import dotrootImport
@@ -6,15 +11,6 @@ from dotrootImport import dotrootImport
 ROOT.gROOT.ProcessLineSync(".L dotrootImport.C")
 
 # Mapping python functions into root:
-# global namespace functions stored in hashtable
-# ROOT.gROOT.GetListOfGlobalFunctions()
-# Maybe TPython has a method to generate a function
-# signature to add to this list
-# for pure python functions that have known types
-
-# mapping python in python is easier
-
-# for C macro functions, make available
-# via the usual
+# make a wrapper in macro, then 
 # ROOT.gROOT.ProcessLine(".L function.C")
 
