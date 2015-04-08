@@ -19,7 +19,11 @@ void dotrootInit() {
   // TODO: check version, at minimum need pyroot
 
   // Explicit load is optional as of ROOT v4.00/06, but harmless
-  gSystem->Load("libPyROOT");
+  int pyLoadStatus = gSystem->Load("libPyROOT");
+  if ( pyLoadStatus < 0 ) {
+    cerr << "No PyROOT module exists, dotroot will not work!" << endl;
+    return;
+  }
 
   // TString because trying to be as ROOT-centric as possible
   // TODO: figure out directory this script is called from
