@@ -41,7 +41,7 @@ def findPackage(packageName) :
 def installPackage(package, gituser) :
     giturl = findGithubUrl(package, gituser)
     if checkGithubUrlExists(package, gituser) :
-        cmd = ['git', 'clone', '--origin', gituser, giturl]
+        cmd = ['git', 'clone', '-q', '--origin', gituser, giturl]
         if subprocess.call(cmd, cwd=os.path.join(dotrootBasePath, 'packages')) != 0 :
             raise dotrootException('Failed to clone package repo: %s' % giturl)
         if gituser != localGitUser :
