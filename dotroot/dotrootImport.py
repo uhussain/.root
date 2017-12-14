@@ -35,7 +35,7 @@ def findPackage(packageName) :
             addRemoteToPackage(package, gituser)
         else :
             raise dotrootException('The package %s has no fork for user %s' % (package, gituser))
-    checkoutPackage(package, gituser)
+    # checkoutPackage(package, gituser)
     return package
     
 def installPackage(package, gituser) :
@@ -76,6 +76,7 @@ def addRemoteToPackage(package, gituser) :
         raise dotrootException('Failed to add remote %s for package %s' % (gituser, package))
 
 def checkoutPackage(package, gituser) :
+    # TODO: git checkout locks a file, so must make threadsafe
     branch = gituser+'/master'
     if gituser == localGitUser :
         branch = 'master'
