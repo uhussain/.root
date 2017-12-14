@@ -3,8 +3,11 @@ import os
 import sys
 
 # Package macro path
-dotrootBasePath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-ROOT.gROOT.SetMacroPath(ROOT.gROOT.GetMacroPath() + os.path.join(dotrootBasePath, 'dotroot', 'macro') + ':')
+_dotrootBasePath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+_prevpath = ROOT.gROOT.GetMacroPath()
+if _prevpath[-1] != ':':
+    _prevpath += ':'
+ROOT.gROOT.SetMacroPath(_prevpath + os.path.join(_dotrootBasePath, 'dotroot', 'macro') + ':')
 
 # Set up dotrootImport() function
 from dotrootImport import dotrootImport
